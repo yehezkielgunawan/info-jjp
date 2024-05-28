@@ -1,0 +1,11 @@
+@import "@fontsource-variable/plus-jakarta-sans";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main,
+nav,
+footer,
+.divider {
+  @apply mx-auto mt-8 max-w-4xl px-2 lg:px-0;
+}
