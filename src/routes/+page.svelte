@@ -19,7 +19,7 @@
 
   let filteredEventList = data.eventList;
   $: filteredEventList = data.eventList?.filter((event) =>
-    selectedCity === "Semua Kota" || selectedCity === ""
+    selectedCity === ""
       ? true
       : event.eventCity.toLowerCase() === selectedCity.toLowerCase(),
   );
@@ -28,14 +28,18 @@
 {#await filteredEventList}
   <p>Loading data...</p>
 {:then filteredEventList}
-  <div class="flex items-center justify-between flex-wrap gap-4">
+  <div
+    class="flex items-center justify-center md:justify-between flex-wrap gap-4"
+  >
     <div class="inline-flex items-center gap-2">
       <p class="badge badge-error">Kemarin</p>
       <p class="badge badge-warning">Hari ini</p>
       <p class="badge badge-accent">Besok</p>
       <p class="badge bg-primary-content">Weekend ini</p>
     </div>
-    <div class="inline-flex items-center gap-2">
+    <div
+      class="inline-flex items-center gap-2 flex-wrap justify-center md:justify-end"
+    >
       <label for="selectedCity">Filter Berdasarkan Kota</label>
       <div>
         <input
@@ -44,11 +48,10 @@
           alt="selectedCity"
           bind:value={selectedCity}
           type="text"
-          class="input input-bordered"
+          class="input input-bordered min-w-56"
           placeholder="Masukkan nama kota"
         />
         <datalist id="cityList">
-          <option value="Semua Kota" />
           {#each cityListUnique as city}
             <option value={city} />
           {/each}

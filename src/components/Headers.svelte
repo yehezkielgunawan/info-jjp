@@ -2,6 +2,8 @@
   import Icon from "@iconify/svelte";
 
   export let title = "List Info Event Jejepangan";
+  let isMenuOpen = false;
+  $: isMenuOpen = false;
 </script>
 
 <svelte:head>
@@ -47,19 +49,48 @@
     </div>
   </div>
   <div class="flex-none">
-    <a
-      href="https://github.com/yehezkielgunawan/link-collection"
-      class="btn btn-ghost hidden md:flex"
-      target="_blank"
-    >
-      <Icon icon={`bxl:github`} width={24} height={24} /> Github Repo</a
-    >
-    <a
-      href="https://github.com/yehezkielgunawan/link-collection"
-      class="btn btn-ghost md:hidden"
-      target="_blank"
-    >
-      <Icon icon={`bxl:github`} width={24} height={24} /></a
-    >
+    <details class="dropdown dropdown-bottom dropdown-end" id="menu-btn">
+      <summary class="m-1 btn">Menu</summary>
+      <ul
+        class="p-2 shadow-lg menu dropdown-content z-[1] bg-base-100 rounded-box w-64"
+      >
+        <li>
+          <a
+            href="https://github.com/yehezkielgunawan/link-collection"
+            class="btn btn-ghost flex"
+            target="_blank"
+            on:click={() =>
+              // close the dropdown by removing the 'open' attribute
+              document.getElementById("menu-btn")?.removeAttribute("open")}
+          >
+            <Icon icon={`bxl:github`} width={24} height={24} /> Github Repo</a
+          >
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="btn btn-ghost flex"
+            on:click={() =>
+              // close the dropdown by removing the 'open' attribute
+              document.getElementById("menu-btn")?.removeAttribute("open")}
+          >
+            <Icon icon={`arcticons:writer`} width={24} height={24} /> Tentang Web
+            Ini</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://mayar.to/yehezgun"
+            class="btn btn-ghost flex"
+            target="_blank"
+            on:click={() =>
+              // close the dropdown by removing the 'open' attribute
+              document.getElementById("menu-btn")?.removeAttribute("open")}
+          >
+            <Icon icon={`mdi:money`} width={24} height={24} /> Support Dana</a
+          >
+        </li>
+      </ul>
+    </details>
   </div>
 </nav>
