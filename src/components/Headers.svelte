@@ -16,7 +16,7 @@
   />
   <meta
     property="og:image"
-    content="https://og-v2.yehezgun.com/api/og?title=Info%20Event%20Jejepangan&desc=Berisi%20List%20Info%20Jejepangan%20Hasil%20Rekap%20Dari%20Komunitas%20Tiap%20Kota%20di%20Indonesia&imgUrl=https://img.icons8.com/isometric/64/info.png&siteName=info-jjp.yehezgun.com"
+    content="https://og-v2.yehezgun.com/api/og?title=Info%20Event%20Jejepangan&desc=Berisi%20List%20Info%20Jejepangan%20Hasil%20Rekap%20Dari%20Komunitas%20Tiap%20Kota%20di%20Indonesia&imgUrl=https://img.icons8.com/isometric/64/info.png&siteName=info-jjp.yehezgun.com&socialMedia=IG:%20@yehez.gallery"
   />
 
   <!-- Twitter Meta Tags -->
@@ -35,7 +35,7 @@
   />
   <meta
     name="twitter:image"
-    content="https://og-v2.yehezgun.com/api/og?title=Info%20Event%20Jejepangan&desc=Berisi%20List%20Info%20Jejepangan%20Hasil%20Rekap%20Dari%20Komunitas%20Tiap%20Kota%20di%20Indonesia&imgUrl=https://img.icons8.com/isometric/64/info.png&siteName=info-jjp.yehezgun.com"
+    content="https://og-v2.yehezgun.com/api/og?title=Info%20Event%20Jejepangan&desc=Berisi%20List%20Info%20Jejepangan%20Hasil%20Rekap%20Dari%20Komunitas%20Tiap%20Kota%20di%20Indonesia&imgUrl=https://img.icons8.com/isometric/64/info.png&siteName=info-jjp.yehezgun.com&socialMedia=IG:%20@yehez.gallery"
   />
 </svelte:head>
 
