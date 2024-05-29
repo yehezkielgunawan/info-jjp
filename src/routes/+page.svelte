@@ -10,7 +10,7 @@
   export let data;
 
   // store the city List data
-  let cityList = data.eventList?.map((event) => event.eventCity);
+  let cityList = data.eventList?.map((event) => event.event_city);
 
   // remove duplicate city
   let cityListUnique = [...new Set(cityList)];
@@ -21,7 +21,7 @@
   $: filteredEventList = data.eventList?.filter((event) =>
     selectedCity === ""
       ? true
-      : event.eventCity.toLowerCase() === selectedCity.toLowerCase(),
+      : event.event_city.toLowerCase().includes(selectedCity.toLowerCase())
   );
 </script>
 
@@ -65,19 +65,19 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
       {#each filteredEventList as event}
         <div
-          class={`card w-full ${isYesterday(indonesianDateStringToDate(event.eventDate)) ? "bg-error" : isToday(indonesianDateStringToDate(event.eventDate)) ? "bg-warning" : isTomorrow(indonesianDateStringToDate(event.eventDate)) ? "bg-accent" : isThisWeek(indonesianDateStringToDate(event.eventDate)) ? "bg-primary-content" : "bg-base-100"} shadow-xl`}
+          class={`card w-full ${isYesterday(indonesianDateStringToDate(event.event_date)) ? "bg-error" : isToday(indonesianDateStringToDate(event.event_date)) ? "bg-warning" : isTomorrow(indonesianDateStringToDate(event.event_date)) ? "bg-accent" : isThisWeek(indonesianDateStringToDate(event.event_date)) ? "bg-primary-content" : "bg-base-100"} shadow-xl`}
         >
           <div class="card-body">
-            <h5 class="card-title">{event.eventName}</h5>
+            <h5 class="card-title">{event.event_name}</h5>
 
-            <p>Tanggal: {event.eventDate}</p>
+            <p>Tanggal: {event.event_date}</p>
             <p>
-              Lokasi: {event.eventLocation}
+              Lokasi: {event.event_location}
             </p>
 
             <div class="card-actions">
               <a
-                href={event.eventInfoLink}
+                href={event.event_info_link}
                 target="_blank"
                 class="btn btn-primary w-full hover:scale-105 transition-transform ease-out duration-300 hover:text-warning"
                 >Detail Event</a

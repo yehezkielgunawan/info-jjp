@@ -56,7 +56,7 @@
       >
         <li>
           <a
-            href="https://github.com/yehezkielgunawan/link-collection"
+            href="https://github.com/yehezkielgunawan/info-jjp"
             class="btn btn-ghost flex"
             target="_blank"
             on:click={() =>
@@ -88,6 +88,18 @@
               document.getElementById("menu-btn")?.removeAttribute("open")}
           >
             <Icon icon={`mdi:money`} width={24} height={24} /> Support Dana</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://documenter.getpostman.com/view/9110092/2sA3QteXCk"
+            class="btn btn-ghost flex"
+            target="_blank"
+            on:click={() =>
+              // close the dropdown by removing the 'open' attribute
+              document.getElementById("menu-btn")?.removeAttribute("open")}
+          >
+            <Icon icon={`arcticons:book`} width={24} height={24} /> Dokumentasi API</a
           >
         </li>
       </ul>

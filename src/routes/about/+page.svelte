@@ -31,7 +31,7 @@
 <p>
   Bagi yang ingin berkontribusi dalam pengembangan website ini, dapat
   mengunjungi <a
-    href="https://github.com/yehezkielgunawan/link-collection"
+    href="https://github.com/yehezkielgunawan/info-jjp"
     target="_blank"
     class="link hover:underline-offset-4 hover:decoration-dashed"
     >Github Repository</a
@@ -42,7 +42,14 @@
     target="_blank"
     class="link hover:underline-offset-4 hover:decoration-dashed"
     >Yehezkiel Gunawan</a
-  > (saat ini). Silahkan mengikuti petunjuk yang ada.
+  >
+  (saat ini). Selain web dari sisi frontend, terdapat juga API yang dapat
+  diakses secara publik
+  <a
+    target="_blank"
+    href="https://documenter.getpostman.com/view/9110092/2sA3QteXCk"
+    class="link hover:underline-offset-4 hover:decoration-dashed">di sini</a
+  > . Silahkan mengikuti petunjuk yang ada.
 </p>
 <p>
   Bagi anda yang ingin berkontribusi dalam bentuk dana agar website ini tetap
