@@ -8,6 +8,9 @@
 
 <svelte:head>
   <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" />
+  <link rel="canonical" />
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://info-jjp.yehezgun.com" />
   <meta property="og:type" content="website" />
