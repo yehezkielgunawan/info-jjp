@@ -30,9 +30,9 @@ export const indonesianDateStringToDate = (
 };
 
 export const isYesterday = (date: Date): boolean => {
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  return date.toDateString() === yesterday.toDateString();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today;
 };
 
 export const isToday = (date: Date): boolean => {
