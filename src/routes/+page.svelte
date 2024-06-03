@@ -29,11 +29,19 @@
   let selectedCity = "";
 
   let filteredEventList = data.eventList;
-  $: filteredEventList = data.eventList?.filter((event) =>
-    selectedCity === ""
-      ? true
-      : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
-  );
+  $: filteredEventList = data.eventList
+    ?.filter((event) =>
+      selectedCity === ""
+        ? true
+        : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
+    )
+    .filter((event) =>
+      selectedTimeFilter === ""
+        ? true
+        : timeFilter
+            .find((filter) => filter.label === selectedTimeFilter)
+            ?.timeFunction(indonesianDateStringToDate(event.event_date)),
+    );
 
   const handleSelectedTimeFilter = (
     selectedFunction: any,
@@ -41,16 +49,34 @@
   ) => {
     if (selectedTimeFilter === selectedTime) {
       selectedTimeFilter = "";
-      filteredEventList = data.eventList?.filter((event) =>
-        selectedCity === ""
-          ? true
-          : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
-      );
+      filteredEventList = data.eventList
+        ?.filter((event) =>
+          selectedCity === ""
+            ? true
+            : event.event_city
+                .toLowerCase()
+                .includes(selectedCity.toLowerCase()),
+        )
+        .filter((event) =>
+          selectedCity === ""
+            ? true
+            : event.event_city
+                .toLowerCase()
+                .includes(selectedCity.toLowerCase()),
+        );
     } else {
       selectedTimeFilter = selectedTime;
-      filteredEventList = data.eventList?.filter((event) =>
-        selectedFunction(indonesianDateStringToDate(event.event_date)),
-      );
+      filteredEventList = data.eventList
+        ?.filter((event) =>
+          selectedFunction(indonesianDateStringToDate(event.event_date)),
+        )
+        .filter((event) =>
+          selectedCity === ""
+            ? true
+            : event.event_city
+                .toLowerCase()
+                .includes(selectedCity.toLowerCase()),
+        );
     }
   };
 </script>
@@ -66,7 +92,7 @@
         <button
           on:click={() =>
             handleSelectedTimeFilter(filter.timeFunction, filter.label)}
-          class={`${filter.style} ${selectedTimeFilter === filter.label ? "bg-primary text-white" : ""} hover:-translate-y-1 transition duration-100`}
+          class={`hover:bg-primary hover:text-white transition-color duration-100 ${selectedTimeFilter === filter.label ? "badge badge-primary text-white" : filter.style}`}
         >
           {filter.label}
         </button>
