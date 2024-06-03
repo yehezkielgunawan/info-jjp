@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     indonesianDateStringToDate,
     isThisWeek,
@@ -8,6 +8,17 @@
   } from "$lib";
 
   export let data;
+  const timeFilter = [
+    { label: "Kemarin", style: "badge badge-error", timeFunction: isYesterday },
+    { label: "Hari ini", style: "badge badge-warning", timeFunction: isToday },
+    { label: "Besok", style: "badge badge-accent", timeFunction: isTomorrow },
+    {
+      label: "Weekend ini",
+      style: "badge bg-primary-content",
+      timeFunction: isThisWeek,
+    },
+  ];
+  let selectedTimeFilter = "";
 
   // store the city List data
   let cityList = data.eventList?.map((event) => event.event_city);
@@ -21,8 +32,27 @@
   $: filteredEventList = data.eventList?.filter((event) =>
     selectedCity === ""
       ? true
-      : event.event_city.toLowerCase().includes(selectedCity.toLowerCase())
+      : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
   );
+
+  const handleSelectedTimeFilter = (
+    selectedFunction: any,
+    selectedTime: string,
+  ) => {
+    if (selectedTimeFilter === selectedTime) {
+      selectedTimeFilter = "";
+      filteredEventList = data.eventList?.filter((event) =>
+        selectedCity === ""
+          ? true
+          : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
+      );
+    } else {
+      selectedTimeFilter = selectedTime;
+      filteredEventList = data.eventList?.filter((event) =>
+        selectedFunction(indonesianDateStringToDate(event.event_date)),
+      );
+    }
+  };
 </script>
 
 {#await filteredEventList}
@@ -32,10 +62,15 @@
     class="flex items-center justify-center md:justify-between flex-wrap gap-4"
   >
     <div class="inline-flex items-center gap-2">
-      <p class="badge badge-error">Kemarin</p>
-      <p class="badge badge-warning">Hari ini</p>
-      <p class="badge badge-accent">Besok</p>
-      <p class="badge bg-primary-content">Weekend ini</p>
+      {#each timeFilter as filter}
+        <button
+          on:click={() =>
+            handleSelectedTimeFilter(filter.timeFunction, filter.label)}
+          class={`${filter.style} ${selectedTimeFilter === filter.label ? "bg-primary text-white" : ""} hover:-translate-y-1 transition duration-100`}
+        >
+          {filter.label}
+        </button>
+      {/each}
     </div>
     <div
       class="inline-flex items-center gap-2 flex-wrap justify-center md:justify-end"
