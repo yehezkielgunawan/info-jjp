@@ -5,6 +5,7 @@
     isToday,
     isTomorrow,
     isYesterday,
+    isNextWeek,
   } from "$lib";
 
   export let data;
@@ -16,6 +17,11 @@
       label: "Weekend ini",
       style: "badge bg-primary-content",
       timeFunction: isThisWeek,
+    },
+    {
+      label: "Minggu Mendatang",
+      style: "badge border-2",
+      timeFunction: isNextWeek,
     },
   ];
   let selectedTimeFilter = "";
@@ -49,21 +55,11 @@
   ) => {
     if (selectedTimeFilter === selectedTime) {
       selectedTimeFilter = "";
-      filteredEventList = data.eventList
-        ?.filter((event) =>
-          selectedCity === ""
-            ? true
-            : event.event_city
-                .toLowerCase()
-                .includes(selectedCity.toLowerCase()),
-        )
-        .filter((event) =>
-          selectedCity === ""
-            ? true
-            : event.event_city
-                .toLowerCase()
-                .includes(selectedCity.toLowerCase()),
-        );
+      filteredEventList = data.eventList?.filter((event) =>
+        selectedCity === ""
+          ? true
+          : event.event_city.toLowerCase().includes(selectedCity.toLowerCase()),
+      );
     } else {
       selectedTimeFilter = selectedTime;
       filteredEventList = data.eventList
@@ -85,14 +81,16 @@
   <p>Loading data...</p>
 {:then filteredEventList}
   <div
-    class="flex items-center justify-center md:justify-between flex-wrap gap-4"
+    class="flex items-center justify-center md:justify-between flex-wrap gap-8"
   >
-    <div class="inline-flex items-center gap-2">
+    <div
+      class="inline-flex items-center gap-4 flex-wrap justify-center md:justify-start"
+    >
       {#each timeFilter as filter}
         <button
           on:click={() =>
             handleSelectedTimeFilter(filter.timeFunction, filter.label)}
-          class={`hover:bg-primary hover:text-white transition-color duration-100 ${selectedTimeFilter === filter.label ? "badge badge-primary text-white" : filter.style}`}
+          class={`hover:shadow-lg hover:shadow-neutral transition-color duration-100 ${selectedTimeFilter === filter.label ? "badge badge-primary text-white" : filter.style}`}
         >
           {filter.label}
         </button>

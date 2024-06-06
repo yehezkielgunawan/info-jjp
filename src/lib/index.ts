@@ -52,3 +52,9 @@ export const isThisWeek = (date: Date): boolean => {
   endOfWeek.setDate(endOfWeek.getDate() + 7);
   return date >= today && date <= endOfWeek;
 };
+
+export const isNextWeek = (date: Date): boolean => {
+  const endOfNextWeek = new Date();
+  endOfNextWeek.setDate(endOfNextWeek.getDate() + 14);
+  return date >= endOfNextWeek;
+};
